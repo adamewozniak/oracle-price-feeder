@@ -65,7 +65,7 @@ func NewBitgetProvider(
 func (p *BitgetProvider) Poll() error {
 	url := p.endpoints.Rest + "/api/spot/v1/market/tickers"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

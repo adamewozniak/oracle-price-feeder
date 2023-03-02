@@ -1,6 +1,7 @@
 package provider
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -22,6 +23,7 @@ const (
 	staleTickersCutoff   = 1 * time.Minute
 	providerCandlePeriod = 10 * time.Minute
 
+	ProviderAstroport Name = "astroport"
 	ProviderFin       Name = "fin"
 	ProviderKraken    Name = "kraken"
 	ProviderBinance   Name = "binance"
@@ -197,14 +199,33 @@ func (p *provider) ProviderPairToCurrencyPair(pair string) types.CurrencyPair {
 	}
 }
 
-func (p *provider) makeHttpRequest(url string) ([]byte, error) {
-	resp, err := p.http.Get(url)
+func (p *provider) httpGet(url string) ([]byte, error) {
+	return p.httpRequest(url, nil)
+}
+
+func (p *provider) httpPost(url string, data []byte) ([]byte, error) {
+	return p.httpRequest(url, data)
+}
+
+func (p *provider) httpRequest(url string, data []byte) ([]byte, error) {
+	var (
+		resp *http.Response
+		err  error
+	)
+
+	if data == nil {
+		resp, err = p.http.Get(url)
+	} else {
+		resp, err = p.http.Post(url, "application/json", bytes.NewBuffer(data))
+	}
+
 	if err != nil {
 		p.logger.Warn().
 			Err(err).
 			Msg("failed requesting tickers")
 		return nil, err
 	}
+
 	if resp.StatusCode != 200 {
 		p.logger.Warn().
 			Int("code", resp.StatusCode).
@@ -221,16 +242,23 @@ func (p *provider) makeHttpRequest(url string) ([]byte, error) {
 			return nil, nil
 		}
 	}
+
 	content, err := ioutil.ReadAll(resp.Body)
+	if resp.StatusCode == 400 {
+		fmt.Println(string(content))
+	}
 	if err != nil {
 		return nil, err
 	}
+
 	return content, nil
 }
 
 func (e *Endpoint) SetDefaults() {
 	var defaults Endpoint
 	switch e.Name {
+	case ProviderAstroport:
+		defaults = astroportDefaultEndpoints
 	case ProviderBinance:
 		defaults = binanceDefaultEndpoints
 	case ProviderBitfinex:

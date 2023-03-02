@@ -70,7 +70,7 @@ func (p *OkxProvider) Poll() error {
 
 	url := p.endpoints.Rest + "/api/v5/market/tickers?instType=SPOT"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

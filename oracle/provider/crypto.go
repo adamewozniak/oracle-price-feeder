@@ -72,7 +72,7 @@ func (p *CryptoProvider) Poll() error {
 
 	url := p.endpoints.Rest + "/v2/public/get-ticker"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

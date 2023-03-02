@@ -65,7 +65,7 @@ func (p *CoinbaseProvider) Poll() error {
 				"%s/products/%s/ticker", p.endpoints.Rest, pair.Join("-"),
 			)
 
-			content, err := p.makeHttpRequest(url)
+			content, err := p.httpGet(url)
 			if err != nil {
 				return
 			}

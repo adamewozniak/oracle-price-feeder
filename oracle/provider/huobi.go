@@ -67,7 +67,7 @@ func (p *HuobiProvider) Poll() error {
 
 	url := p.endpoints.Rest + "/market/tickers"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

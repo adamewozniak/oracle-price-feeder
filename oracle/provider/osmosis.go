@@ -65,7 +65,7 @@ func (p *OsmosisProvider) Poll() error {
 
 	url := p.endpoints.Rest + "/tokens/v2/all"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

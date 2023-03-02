@@ -63,7 +63,7 @@ func (p *PoloniexProvider) Poll() error {
 
 	url := p.endpoints.Rest + "/markets/ticker24h"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

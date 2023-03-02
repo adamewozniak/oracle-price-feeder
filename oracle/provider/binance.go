@@ -78,7 +78,7 @@ func (p *BinanceProvider) Poll() error {
 		strings.Join(symbols, "\",\""),
 	)
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

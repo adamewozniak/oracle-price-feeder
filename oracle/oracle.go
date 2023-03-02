@@ -458,6 +458,8 @@ func NewProvider(
 	fmt.Println(providerName)
 	switch providerName {
 
+	case provider.ProviderAstroport:
+		return provider.NewAstroportProvider(ctx, providerLogger, endpoint, providerPairs...)
 	case provider.ProviderBinance, provider.ProviderBinanceUS:
 		return provider.NewBinanceProvider(ctx, providerLogger, endpoint, providerPairs...)
 	case provider.ProviderBitfinex:

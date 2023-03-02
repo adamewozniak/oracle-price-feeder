@@ -66,7 +66,7 @@ func NewOsmosisV2Provider(
 func (p *OsmosisV2Provider) Poll() error {
 	url := p.endpoints.Rest + "/stream/pool/v1/all?min_liquidity=10000&limit=160"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

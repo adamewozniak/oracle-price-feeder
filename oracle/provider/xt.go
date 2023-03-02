@@ -70,7 +70,7 @@ func (p *XtProvider) Poll() error {
 
 	url := p.endpoints.Rest + "/v4/public/ticker"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

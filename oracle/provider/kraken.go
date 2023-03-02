@@ -66,7 +66,7 @@ func NewKrakenProvider(
 
 	url := provider.endpoints.Rest + "/0/public/AssetPairs"
 
-	content, err := provider.makeHttpRequest(url)
+	content, err := provider.httpGet(url)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +114,7 @@ func (p *KrakenProvider) Poll() error {
 
 	url := p.endpoints.Rest + "/0/public/Ticker"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

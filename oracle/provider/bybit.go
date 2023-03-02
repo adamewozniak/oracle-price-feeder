@@ -65,7 +65,7 @@ func NewBybitProvider(
 func (p *BybitProvider) Poll() error {
 	url := p.endpoints.Rest + "/v5/market/tickers?category=spot"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

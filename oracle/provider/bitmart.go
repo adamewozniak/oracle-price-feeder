@@ -71,7 +71,7 @@ func (p *BitmartProvider) Poll() error {
 
 	url := p.endpoints.Rest + "/spot/v2/ticker"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

@@ -85,7 +85,7 @@ func NewPhemexProvider(
 
 	url := provider.endpoints.Rest + "/public/products"
 
-	content, err := provider.makeHttpRequest(url)
+	content, err := provider.httpGet(url)
 	if err != nil {
 		return nil, err
 	}
@@ -131,7 +131,7 @@ func (p *PhemexProvider) Poll() error {
 			symbol := pair.String()
 			url := p.endpoints.Rest + "/md/spot/ticker/24hr?symbol=s" + symbol
 
-			content, err := p.makeHttpRequest(url)
+			content, err := p.httpGet(url)
 			if err != nil {
 				p.logger.Error().
 					Str("symbol", symbol).

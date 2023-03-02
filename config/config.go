@@ -36,6 +36,7 @@ var (
 	// SupportedProviders defines a lookup table of all the supported currency API
 	// providers.
 	SupportedProviders = map[provider.Name]struct{}{
+		provider.ProviderAstroport: {},
 		provider.ProviderBybit:     {},
 		provider.ProviderBitfinex:  {},
 		provider.ProviderBitforex:  {},
@@ -84,6 +85,7 @@ var (
 		"ETH":     {},
 		"ATOM":    {},
 		"OSMO":    {},
+		"LUNA":    {},
 	}
 )
 

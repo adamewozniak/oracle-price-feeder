@@ -72,7 +72,7 @@ func (p *LbankProvider) Poll() error {
 
 	url := p.endpoints.Rest + "/v2/ticker.do?symbol=all"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

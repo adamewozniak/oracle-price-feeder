@@ -57,7 +57,7 @@ func NewHitBtcProvider(
 func (p *HitBtcProvider) Poll() error {
 	url := p.endpoints.Rest + "/api/3/public/ticker"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}

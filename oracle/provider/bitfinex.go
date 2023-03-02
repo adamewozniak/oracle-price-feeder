@@ -49,7 +49,7 @@ func NewBitfinexProvider(
 
 	url := provider.endpoints.Rest + "/v2/conf/pub:list:pair:exchange"
 
-	content, err := provider.makeHttpRequest(url)
+	content, err := provider.httpGet(url)
 	if err != nil {
 		return nil, err
 	}
@@ -82,7 +82,7 @@ func (p *BitfinexProvider) Poll() error {
 
 	url := p.endpoints.Rest + "/v2/tickers?symbols=ALL"
 
-	content, err := p.makeHttpRequest(url)
+	content, err := p.httpGet(url)
 	if err != nil {
 		return err
 	}
