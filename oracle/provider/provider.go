@@ -24,30 +24,31 @@ const (
 	providerCandlePeriod = 10 * time.Minute
 
 	ProviderAstroport Name = "astroport"
-	ProviderFin       Name = "fin"
-	ProviderKraken    Name = "kraken"
 	ProviderBinance   Name = "binance"
 	ProviderBinanceUS Name = "binanceus"
-	ProviderOsmosis   Name = "osmosis"
-	ProviderOsmosisV2 Name = "osmosisv2"
-	ProviderHuobi     Name = "huobi"
-	ProviderOkx       Name = "okx"
-	ProviderGate      Name = "gate"
-	ProviderCoinbase  Name = "coinbase"
+	ProviderBitfinex  Name = "bitfinex"
+	ProviderBitforex  Name = "bitforex"
 	ProviderBitget    Name = "bitget"
 	ProviderBitmart   Name = "bitmart"
 	ProviderBkex      Name = "bkex"
-	ProviderBitfinex  Name = "bitfinex"
-	ProviderBitforex  Name = "bitforex"
-	ProviderHitBtc    Name = "hitbtc"
-	ProviderPoloniex  Name = "poloniex"
-	ProviderPhemex    Name = "phemex"
-	ProviderLbank     Name = "lbank"
-	ProviderKucoin    Name = "kucoin"
 	ProviderBybit     Name = "bybit"
-	ProviderMexc      Name = "mexc"
+	ProviderCoinbase  Name = "coinbase"
 	ProviderCrypto    Name = "crypto"
+	ProviderCurve     Name = "curve"
+	ProviderFin       Name = "fin"
+	ProviderGate      Name = "gate"
+	ProviderHitBtc    Name = "hitbtc"
+	ProviderHuobi     Name = "huobi"
+	ProviderKraken    Name = "kraken"
+	ProviderKucoin    Name = "kucoin"
+	ProviderLbank     Name = "lbank"
+	ProviderMexc      Name = "mexc"
 	ProviderMock      Name = "mock"
+	ProviderOkx       Name = "okx"
+	ProviderOsmosis   Name = "osmosis"
+	ProviderOsmosisV2 Name = "osmosisv2"
+	ProviderPhemex    Name = "phemex"
+	ProviderPoloniex  Name = "poloniex"
 	ProviderStride    Name = "stride"
 	ProviderXt        Name = "xt"
 )
@@ -277,6 +278,8 @@ func (e *Endpoint) SetDefaults() {
 		defaults = coinbaseDefaultEndpoints
 	case ProviderCrypto:
 		defaults = cryptoDefaultEndpoints
+	case ProviderCurve:
+		defaults = curveDefaultEndpoints
 	case ProviderFin:
 		defaults = finDefaultEndpoints
 	case ProviderGate:
